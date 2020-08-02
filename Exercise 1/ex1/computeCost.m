@@ -12,10 +12,7 @@ J = 0;
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
-for i = 1:m
-  individual_cost(i) = ((theta(1) + theta(2)*X(i)) - y(i))^2;
-end
-J = (1/(2*m)) * (sum(individual_cost))
+  J = (1/(2*m))*sum(((X*theta)-y).^2);
 
 % =========================================================================
 
