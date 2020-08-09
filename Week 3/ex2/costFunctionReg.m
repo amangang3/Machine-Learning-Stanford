@@ -22,5 +22,13 @@ h = sigmoid(X*theta);
 regularization_term = lambda/(2*m) * sum ((theta(2:end)).^2);
 addition_term = sum(-y.*log(h) - (1-y) .* log(1-h));
 J = (1/m * addition_term) + regularization_term;
+
+%gradient
+addition_term = sum((h-y).*X);
+regularization_term = lambda/m .* theta(2:end);
+grad = 1/m * addition_term;
+transpose_reg = transpose(regularization_term);
+grad(2:end) = grad(2:end) + transpose_reg;
+
 % =============================================================
 end
