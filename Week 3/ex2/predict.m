@@ -13,14 +13,14 @@ p = zeros(m, 1);
 % Instructions: Complete the following code to make predictions using
 %               your learned logistic regression parameters. 
 %               You should set p to a vector of 0's and 1's
-%
-
-
-
-
-
-
-
+h = sigmoid(X*theta);
+for student = 1:m
+    if h(student) > 0.5
+        p(student) = 1;
+    else
+        p(student) = 0;
+    end
+end
 % =========================================================================
 
 
