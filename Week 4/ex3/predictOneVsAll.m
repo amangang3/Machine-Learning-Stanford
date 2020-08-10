@@ -29,8 +29,10 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-
-
+all_theta = transpose(all_theta);
+h = sigmoid(X*all_theta);
+[max_likelihood,index] = max(h,[],2); %returns the max on each row
+p = index;
 
 
 
