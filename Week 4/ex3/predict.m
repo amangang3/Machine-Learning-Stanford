@@ -23,18 +23,12 @@ X = [ones(m, 1) X];
 z_2 = (Theta1 * X');
 a_2 = sigmoid(z_2);
 %add ones to a_2
-disp(size(a_2))
 a_2 = [transpose(ones(size(a_2, 2), 1)); a_2];
-disp(size(a_2))
 z_3 = (Theta2 * a_2);
 h = sigmoid(z_3);
-
-
-
-
-
-
-
+disp(size(h));
+[max_likelihood,index] = max(h,[],1); %returns the max on each row
+p = index;
 % =========================================================================
 
 
