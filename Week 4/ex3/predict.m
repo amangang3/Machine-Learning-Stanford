@@ -19,11 +19,13 @@ p = zeros(size(X, 1), 1);
 %       function can also return the index of the max element, for more
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
-
 X = [ones(m, 1) X];
 z_2 = (Theta1 * X');
 a_2 = sigmoid(z_2);
-a_2 = [ones(size(a_2, 2),1)' a_2];
+%add ones to a_2
+disp(size(a_2))
+a_2 = [transpose(ones(size(a_2, 2), 1)); a_2];
+disp(size(a_2))
 z_3 = (Theta2 * a_2);
 h = sigmoid(z_3);
 
