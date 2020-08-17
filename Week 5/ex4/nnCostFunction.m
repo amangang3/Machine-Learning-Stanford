@@ -79,8 +79,10 @@ end
 % Now compute the cost function without regularization
 addition_term = sum(sum(-y_nn.*log(h) - (1-y_nn) .* log(1-h)));
 J = (1/m) * addition_term; 
-
-
+% Now compute the cost function with regularization 
+addition_term = (sum(sum(Theta1(:, 2:end).^2))) + sum(sum((Theta2(:, 2:end).^2)));
+reg_term = (lambda/(2*m)) .* addition_term;
+J = J + reg_term;
 
 
 
