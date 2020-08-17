@@ -62,6 +62,26 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Part 1: cost function 
+% First compute h(x) using forward propagation 
+a_1 = [ones(m,1) X];
+z_2 = a_1 * Theta1';
+a_2 = sigmoid(z_2);
+a_2 = [ones(m,1) a_2];
+z_3 = a_2 * Theta2';
+h = sigmoid(z_3);
+
+% Recode the y variable
+y_nn = zeros(length(y), 10);
+for coll = 1:length(y)
+    y_nn(coll, y(coll)) = 1;
+end
+% Now compute the cost function without regularization
+addition_term = sum(sum(-y_nn.*log(h) - (1-y_nn) .* log(1-h)));
+J = (1/m) * addition_term; 
+
+
+
 
 
 
