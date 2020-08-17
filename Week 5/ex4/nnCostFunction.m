@@ -72,13 +72,13 @@ z_3 = a_2 * Theta2';
 h = sigmoid(z_3);
 
 % Recode the y variable
-y_nn = zeros(length(y), 10);
 for coll = 1:length(y)
     y_nn(coll, y(coll)) = 1;
 end
+
 % Now compute the cost function without regularization
-addition_term = sum(sum(-y_nn.*log(h) - (1-y_nn) .* log(1-h)));
-J = (1/m) * addition_term; 
+J = sum(sum( -y_nn.*log(h) - (1-y_nn).*log(1-h) ))/m;
+%J = (1/m) * addition_term; 
 % Now compute the cost function with regularization 
 addition_term = (sum(sum(Theta1(:, 2:end).^2))) + sum(sum((Theta2(:, 2:end).^2)));
 reg_term = (lambda/(2*m)) .* addition_term;
