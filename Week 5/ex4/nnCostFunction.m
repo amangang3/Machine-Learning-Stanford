@@ -84,6 +84,17 @@ addition_term = (sum(sum(Theta1(:, 2:end).^2))) + sum(sum((Theta2(:, 2:end).^2))
 reg_term = (lambda/(2*m)) .* addition_term;
 J = J + reg_term;
 
+% Now impliment back prop in the steps outlined previously
+for t = 1:m
+    % Step 1 is to impliment feed forward algorithms first 
+    a_1 = X(t, :)';
+    a_1 = [1; a_1];
+    z_2 = Theta1 * a_1;
+    a_2 = sigmoid(z_2);
+    a_2 = [1; a_2];
+    z_3 = Theta2 * a_2;
+    h = sigmoid(z_3);
+end
 
 
 
