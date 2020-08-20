@@ -18,13 +18,18 @@ grad = zeros(size(theta));
 %
 %               You should set J to the cost and grad to the gradient.
 %
+
+% Cost function regularized
 h = X * theta;
 addition_term = (sum((h-y).^2)) * 1/(2*m);
 regulization_term = lambda/(2*m) * (sum((theta(2:end)).^2));
 J = addition_term + regulization_term;
 
-
-
+% Gradient regularized
+grad = 1/m * sum(((h-y).*X));
+disp(grad);
+regularization_term = lambda/m .* theta(2:end);
+grad(2:end) = grad(2:end) + regularization_term'; %transpose is needed for the math to work
 
 
 
