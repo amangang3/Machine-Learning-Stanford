@@ -18,7 +18,10 @@ grad = zeros(size(theta));
 %
 %               You should set J to the cost and grad to the gradient.
 %
-
+h = X * theta;
+addition_term = (sum((h-y).^2)) * 1/(2*m);
+regulization_term = lambda/(2*m) * (sum((theta(2:end)).^2));
+J = addition_term + regulization_term;
 
 
 
