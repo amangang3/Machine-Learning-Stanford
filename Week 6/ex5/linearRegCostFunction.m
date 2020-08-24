@@ -21,23 +21,11 @@ grad = zeros(size(theta));
 
 % Cost function regularized
 h = X * theta;
-addition_term = (sum((h-y).^2)) * 1/(2*m);
-regulization_term = lambda/(2*m) * (sum((theta(2:end)).^2));
-J = addition_term + regulization_term;
+r_theta = [0; theta(2:end)];
+J = 1/(2*m) * sum((h - y).^ 2) + lambda/(2*m) * sum(r_theta.^2);
 
 % Gradient regularized
-grad = 1/m * sum(((h-y).*X));
-disp(grad);
-regularization_term = lambda/m .* theta(2:end);
-grad(2:end) = grad(2:end) + regularization_term'; %transpose is needed for the math to work
-
-
-
-
-
-
-
-
+grad = (1/m * (h - y)' * X)' + ((lambda/m) .* r_theta);
 % =========================================================================
 
 grad = grad(:);
