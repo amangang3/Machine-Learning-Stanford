@@ -15,7 +15,8 @@ sim = 0;
 %               sigma
 %
 %
-
+addition_term = sum((x1-x2).^2);
+sim = exp((-1*addition_term) / (2*sigma^2));
 
 
 
