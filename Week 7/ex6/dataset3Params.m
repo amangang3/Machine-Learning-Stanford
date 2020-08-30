@@ -23,14 +23,20 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 
 % need to loop 0.3 - 3
-
-
-
-
-
-
-
-
+minimum_error = Inf; 
+steps = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+for c_check = steps
+    for sigma_check = steps
+        model = svmTrain(X, y, c_check, @(x1, x2) gaussianKernel(x1, x2, sigma_check));
+        preds = svmPredict(model, Xval);
+        error_in_preds = mean(double(preds ~= yval));
+        if error_in_preds < minimum_error
+            C = c_check; 
+            sigma = sigma_check;
+            minimum_error = error_in_preds;
+        end
+    end
+end
 % =========================================================================
 
 end
