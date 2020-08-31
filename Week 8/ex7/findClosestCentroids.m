@@ -19,7 +19,11 @@ idx = zeros(size(X,1), 1);
 %               range 1..K
 %
 % Note: You can use a for-loop over the examples to compute this.
-%
+
+for i = 1:length(X)
+    distance = (X(i,:) - centroids); 
+    distance = sumsq(distance, 2);
+    [min_distance, idx(i)] = min(distance); 
 
 
 
@@ -29,5 +33,4 @@ idx = zeros(size(X,1), 1);
 
 % =============================================================
 
-end
-
+end 
